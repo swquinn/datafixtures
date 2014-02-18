@@ -40,7 +40,9 @@ public class FixtureOrderComparator implements Comparator<Class<?>>{
 	@Override
 	public int compare(final Class<?> clazz1, final Class<?> clazz2) {
 		try {
-			return Integer.compare(getOrder(clazz1), getOrder(clazz2));
+			final int order1 = getOrder(clazz1);
+			final int order2 = getOrder(clazz2);
+			return (order1 < order2) ? -1 : ((order1 == order2) ? 0 : 1);
 		}
 		catch (Exception ex) {
 			// Empty. Swallow the exception.
